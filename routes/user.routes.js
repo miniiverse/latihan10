@@ -3,13 +3,13 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user.controller');
+const { authBearer } = require('../middlewares/auth.middleware');
 
-// Routing standar REST API
-router.get('/', userController.getAllUsers); // get all
-router.get('/:id', userController.getUserById); // search by id
-router.post('/', userController.createUser); // create
-router.put('/:id', userController.updateUser); // update by id
-router.delete('/:id', userController.deleteUser); // delete
+// Semua route user wajib pakai Bearer Token
+router.get('/', authBearer, userController.getAllUsers); 
+router.get('/:id', authBearer, userController.getUserById);
+router.post('/', authBearer, userController.createUser);
+router.put('/:id', authBearer, userController.updateUser);
+router.delete('/:id', authBearer, userController.deleteUser);
 
 module.exports = router;
-
