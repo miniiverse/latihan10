@@ -3,7 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const productsController = require('../controllers/products.controller');
-const { authBearer } = require('../middlewares/auth.middleware');
+const authBearer = require('../middlewares/auth.middleware');
+
 
 // Routes untuk products (GET tidak perlu auth)
 router.get('/', productsController.getAllProducts);

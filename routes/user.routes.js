@@ -3,7 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user.controller');
-const { authBearer } = require('../middlewares/auth.middleware');
+const authBearer = require('../middlewares/auth.middleware');
+
 
 // Semua route user wajib pakai Bearer Token
 router.get('/', authBearer, userController.getAllUsers); 
